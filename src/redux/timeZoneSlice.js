@@ -19,13 +19,23 @@ const initialState = {
         "Asia/Bangkok",
         "Asia/Manila",
         "Asia/Tokyo"
-    ]
+    ],
+    userZone: "",
+    targetZone: "",
+    timeDiff: 0
 }
 
 export const timeZoneSlice = createSlice({
     name: "timezones",
     initialState,
-    reducers: {}
+    reducers: {
+        selectTimeZone: (state, action) => {
+            state.userZone = action.value;
+            console.log("selected timezone: ", action.payload);
+        }
+    }
 })
 
-export default timeZoneSlice.reducers;
+export const { selectTimeZone } = timeZoneSlice.actions;
+
+export default timeZoneSlice.reducer;
