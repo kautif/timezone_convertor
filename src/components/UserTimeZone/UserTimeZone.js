@@ -63,29 +63,30 @@ export default function UserTimeZone () {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Pacific (UTC-8)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Mountain (UTC-7)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Central (UTC-6)</Dropdown.Item>
+                        <Dropdown.Item href="#/action-1">Los Angeles (Pacific) (UTC-8)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Edmonton (Mountain) (UTC-7)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Chicago (Central) (UTC-6)</Dropdown.Item>
 
-                            <Dropdown.Item href="#/action-1">Eastern (UTC-5)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Brazil (UTC-4)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Greenland (UTC-3)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">New York (Eastern) (UTC-5)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Sao Paulo, Brazil (UTC-4)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Nuuk, Greenland (UTC-3)</Dropdown.Item>
 
-                            <Dropdown.Item href="#/action-1">Iceland (UTC-2)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">St. Helena, Iceland (UTC-2)</Dropdown.Item>
                             <Dropdown.Item href="#/action-2">London (UTC-1)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Norway (UTC 0)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Oslo, Norway (UTC 0)</Dropdown.Item>
                             
-                            <Dropdown.Item href="#/action-1">Egypt (UTC+1)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Zimbabwe (UTC+2)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Ethiopia (UTC+3)</Dropdown.Item>
-                            
-                            <Dropdown.Item href="#/action-1">Oman (UTC+4)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Turkmenistan (UTC+5)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Bhutan (UTC+6)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">Dublin, Ireland (UTC+1)</Dropdown.Item>
 
-                            <Dropdown.Item href="#/action-1">Thailand (UTC+7)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Philippines (UTC+8)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Japan (UTC+9)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">Cairo, Egypt (UTC+2)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Moscow, Russia (UTC+3)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Muscat, Saudi Arabia (UTC+4)</Dropdown.Item>
+                            
+                            <Dropdown.Item href="#/action-1">Karachi, Pakistan (UTC+5)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Dhaka, Bangladesh (UTC+6)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Bangkok, Thailand (UTC+7)</Dropdown.Item>
+
+                            <Dropdown.Item href="#/action-2">Manila, Philippines (UTC+8)</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Tokyo, Japan (UTC+9)</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
