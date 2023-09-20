@@ -3,8 +3,6 @@ import { Dropdown } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import { useSelector, useDispatch } from "react-redux";
 import { selectTimeZone } from "../../redux/timeZoneSlice";
-import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
-// import "./UserTimeZone.css"
 
 export default function UserTimeZone () {
     const dispatch = useDispatch();
@@ -29,16 +27,16 @@ export default function UserTimeZone () {
     return (
         <div>
             <Form>
-                <div className="timezone__dropdowns-container flex">
+                <div className="timezone__dropdowns-container text-center flex justify-around">
                     <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" className="mb-5">
                             Your Timezone
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>        
                             <Dropdown.Item href="#/action-1"
                                  value="America/Los_Angeles"
-                                 onClick={(e) => console.log(e.target.attributes.value.nodeValue)}
+                                 onClick={(e) => dispatch(selectTimeZone(e.target.attributes.value.nodeValue))}
                                  >Los Angeles (Pacific) (UTC-8)</Dropdown.Item>
                             <Dropdown.Item href="#/action-2" value="America/Edmonton">Edmonton (Mountain) (UTC-7)</Dropdown.Item>
                             <Dropdown.Item href="#/action-3" value="America/Chicago">Chicago (Central) (UTC-6)</Dropdown.Item>
@@ -67,7 +65,7 @@ export default function UserTimeZone () {
                     </Dropdown>
 
                     <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <Dropdown.Toggle variant="success" id="dropdown-basic2">
                             Target Timezone
                         </Dropdown.Toggle>
 
