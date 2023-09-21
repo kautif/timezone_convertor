@@ -30,12 +30,14 @@ export const timeZoneSlice = createSlice({
     initialState,
     reducers: {
         selectTimeZone: (state, action) => {
-            state.userZone = action.value;
-            console.log("selected timezone: ", action.payload);
+            state.userZone = action.payload;
+        },
+        selectTargetZone: (state, action) => {
+            state.targetZone = action.payload;
         }
     }
 })
 
-export const { selectTimeZone } = timeZoneSlice.actions;
+export const { selectTimeZone, selectTargetZone } = timeZoneSlice.actions;
 
 export default timeZoneSlice.reducer;

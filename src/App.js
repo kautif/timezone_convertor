@@ -1,10 +1,10 @@
 import './App.css';
-import UserTimeZone from './components/UserTimeZone/UserTimeZone';
+import Timezones from './components/Timezones/Timezones';
 
 function App() {
   return (
     <div className="App">
-      <UserTimeZone />
+      <Timezones />
     </div>
   );
 }
