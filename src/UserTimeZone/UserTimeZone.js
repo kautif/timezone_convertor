@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Dropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectTimeZone } from "../redux/timeZoneSlice";
@@ -14,11 +15,11 @@ export default function UserTimeZone () {
     const dispatch = useDispatch();
     const userZone = useSelector(state => state.userZone);
     const [currentZone, setCurrentZone] = useState("");
-
+    console.log(process.env.REACT_APP_TIMEZONE_DB_API_KEY);
     // useEffect(() => {
     //     setCurrentZone(prevZone => userZone);
-    //     console.log("current zone: ", userZone);
-    // }, [userZone])
+    //     axios.get(`http://api.timezonedb.com/v2.1/get-time-zone?key=${process.env.REACT_APP_TIMEZONE_DB_API_KEY}&format=json&by=zone&zone=${currentZone}`)
+    // }, [currentZone])
 
     return (
             <div className="timezone__dropdowns__user">
