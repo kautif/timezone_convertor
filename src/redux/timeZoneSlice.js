@@ -22,7 +22,12 @@ const initialState = {
     ],
     userZone: "",
     targetZone: "",
-    timeDiff: 0
+    userDefaultHours: 0,
+    userHours: 0,
+    userMin: 0,
+    targetDefaultHours: 0,
+    targetHours: 0,
+    targetMin: 0
 }
 
 export const timeZoneSlice = createSlice({
@@ -35,10 +40,28 @@ export const timeZoneSlice = createSlice({
         },
         selectTargetZone: (state, action) => {
             state.targetZone = action.payload;
+            console.log("targetZone: ", state.targetZone);
+        },
+        updateUserDefaultHours: (state, action) => {
+            state.userDefaultHours = action.payload;
+        },
+        updateUserMin: (state, action) => {
+            state.userMin = action.payload;
+        },
+        updateTargetDefaultHours: (state, action) => {
+            state.targetDefaultHours = action.payload;
+        },
+        updateTargetMin: (state, action) => {
+            state.targetMin = action.payload;
         }
     }
 })
 
-export const { selectTimeZone, selectTargetZone } = timeZoneSlice.actions;
+export const { selectTimeZone, 
+                selectTargetZone,
+                updateUserDefaultHours,
+                updateUserMin,
+                updateTargetDefaultHours,
+                updateTargetMin } = timeZoneSlice.actions;
 
 export default timeZoneSlice.reducer;

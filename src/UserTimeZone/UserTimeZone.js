@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Dropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTimeZone } from "../redux/timeZoneSlice";
+import { selectTimeZone, 
+            updateUserDefaultHours, 
+            updateUserMin, 
+            updateTargetHours, 
+            updateTargetMin } from "../redux/timeZoneSlice";
 
 
 // To get timestamp for timezone
@@ -13,37 +17,31 @@ import { selectTimeZone } from "../redux/timeZoneSlice";
 
 export default function UserTimeZone () {
     const dispatch = useDispatch();
-    const userZone = useSelector(state => state.userZone);
-    const [currentZone, setCurrentZone] = useState("");
-    const [time, setTime] = useState("");
+    const [userZone, setUserZone] = useState("");
+    const userHours = useSelector(state => state.timezones.userHours);
+    const userMin = useSelector(state => state.timezones.userMin);
+
     const [hours, setHours] = useState("");
-    const [min, setMin] = useState("");
     const [seconds, setSeconds] = useState("");
     let formattedHours = "";
     function getTimeInfo (zone) {
         axios.get(`http://api.timezonedb.com/v2.1/get-time-zone?key=${process.env.REACT_APP_TIMEZONE_DB_API_KEY}&format=json&by=zone&zone=${zone}`)
         .then(response => {
             // Time in 24 HR format
-            console.log("response: ", response.data.formatted.substring(11));
             let defaultTime = response.data.formatted.substring(11);
             formattedHours = defaultTime.substring(0, 2)[0];
-            setTime(defaultTime);
+            dispatch(updateUserDefaultHours(defaultTime.substring(0, 2)));
             if (response.data.formatted.substring(11)[0] == "0") {
                 setHours(defaultTime.substring(0, 2)[1]);
             } else {
                 setHours(defaultTime.substring(0, 2));
             }
-            
-            setMin(defaultTime.substring(3, 5));
+            dispatch(updateUserMin(defaultTime.substring(3, 5)));
             setSeconds(defaultTime.substring(6,8));
         }).catch(err => {
             console.error(err.message);
         })
     }
-
-    // useEffect(() => {
-    //     setCurrentZone(userZone);
-    // }, [currentZone])
 
     return (
             <div className="timezone__dropdowns__user">
@@ -58,6 +56,7 @@ export default function UserTimeZone () {
                                     onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}
                                     >Los Angeles (Pacific) (UTC-8)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -65,6 +64,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Edmonton (Mountain) (UTC-7)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -72,6 +72,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Chicago (Central) (UTC-6)</Dropdown.Item>
 
@@ -80,6 +81,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     New York (Eastern) (UTC-5)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -87,6 +89,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Sao Paulo, Brazil (UTC-4)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -94,6 +97,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Nuuk, Greenland (UTC-3)</Dropdown.Item>
 
@@ -102,6 +106,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     St. Helena, Iceland (UTC-2)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -109,6 +114,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     London (UTC-1)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -116,6 +122,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Oslo, Norway (UTC 0)</Dropdown.Item>
 
@@ -124,6 +131,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Dublin, Ireland (UTC+1)</Dropdown.Item>
                                 
@@ -132,6 +140,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Cairo, Egypt (UTC+2)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -139,6 +148,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Moscow, Russia (UTC+3)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -146,6 +156,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Muscat, Saudi Arabia (UTC+4)</Dropdown.Item>
                                 
@@ -154,6 +165,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Karachi, Pakistan (UTC+5)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -161,6 +173,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Dhaka, Bangladesh (UTC+6)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -168,6 +181,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Bangkok, Thailand (UTC+7)</Dropdown.Item>
 
@@ -176,6 +190,7 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Manila, Philippines (UTC+8)</Dropdown.Item>
                                 <Dropdown.Item 
@@ -183,11 +198,13 @@ export default function UserTimeZone () {
                                 onClick={(e) => {
                                         dispatch(selectTimeZone(e.target.attributes.value.nodeValue));
                                         getTimeInfo(e.target.attributes.value.nodeValue);
+                                        setUserZone(e.target.innerText);
                                     }}>
                                     Tokyo, Japan (UTC+9)</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <p>Your Time: {hours && <span>{hours && hours > 11 ? hours - 12 : hours}:{min}:{seconds}</span>}<span>{hours > 11 ? "PM" : "AM"}</span></p>
+                        <p>Your Zone: {userZone}</p>
+                        <p>Your Time: {hours && <span>{hours && hours > 12 ? hours - 12 : hours}:{userMin}:{seconds}</span>}<span>{hours && (hours >= 11 ? "PM" : "AM")}</span></p>
                 </div>
     )
 }
