@@ -200,7 +200,6 @@ export default function TargetTimeZone () {
                                         getTargetTimeInfo(e.target.attributes.value.nodeValue);
                                         setTargetZone(e.target.innerText);
                                     }}>
-                                    
                                         Bangkok, Thailand (UTC+7)</Dropdown.Item>
 
                                     <Dropdown.Item 

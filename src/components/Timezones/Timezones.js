@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectTimeZone, selectTargetZone } from "../../redux/timeZoneSlice";
 import UserTimeZone from "../../UserTimeZone/UserTimeZone";
 import TargetTimeZone from "../TargetTimeZone/TargetTimeZone";
+import TimezoneDiff from "../TimezoneDiff/TimezoneDiff";
 
 export default function Timezones () {
     const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function Timezones () {
                     <TargetTimeZone />
                 </div>
             </Form>
+            <TimezoneDiff />
         </div>
     )
 }
