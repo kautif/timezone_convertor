@@ -6,7 +6,7 @@ import { selectTimeZone,
             updateUserDefaultHours, 
             updateUserMin, 
             updateTargetHours, 
-            updateTargetMin } from "../redux/timeZoneSlice";
+            updateTargetMin } from "../../redux/timeZoneSlice";
 
 
 // To get timestamp for timezone
