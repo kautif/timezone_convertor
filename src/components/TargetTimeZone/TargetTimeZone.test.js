@@ -22,3 +22,18 @@ test('selects timezone from target dropdown', () => {
 
     expect(screen.getByText('Los Angeles (Pacific) (UTC-8)')).toBeInTheDocument();
 })
+
+test('displays time of selected timezone', () => {
+    render(<Provider store={store}>
+        <TargetTimeZone />
+    </Provider>);
+    const dropdownElement = screen.getByText("Target Timezone");
+    fireEvent.click(dropdownElement);
+    const option = screen.getByText('Los Angeles (Pacific) (UTC-8)')
+    fireEvent.click(option);
+
+    const timeZoneText = screen.getByTestId("target-timezone");
+
+    // expect(screen.getByText('Los Angeles (Pacific) (UTC-8)')).toBeInTheDocument();
+    expect(screen.get)
+})

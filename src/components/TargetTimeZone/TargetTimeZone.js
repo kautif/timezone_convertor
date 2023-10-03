@@ -223,7 +223,7 @@ export default function TargetTimeZone () {
                                         Tokyo, Japan (UTC+9)</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <p>Target Timezone: {targetZone}</p>
+                        <p data-testid="target-timezone">Target Timezone: {!targetZone ? <strong>Select timezone to compare to in the dropdown above</strong> : targetZone}</p>
                         <p>Target Time: {hours && <span>{hours && hours > 12 ? hours - 12 : hours}:{targetMin}:{seconds}</span>}<span>{hours && (hours >= 11 ? "PM" : "AM")}</span></p>
                     </div>
     )

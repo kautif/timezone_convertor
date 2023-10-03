@@ -203,7 +203,7 @@ export default function UserTimeZone () {
                                     Tokyo, Japan (UTC+9)</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <p>Your Zone: {userZone}</p>
+                        <p>Your Zone: {!userZone ? <strong>Select your timezone in the dropdown above</strong> : userZone}</p>
                         <p>Your Time: {hours && <span>{hours && hours > 12 ? hours - 12 : hours}:{userMin}:{seconds}</span>}<span>{hours && (hours >= 11 ? "PM" : "AM")}</span></p>
                 </div>
     )
