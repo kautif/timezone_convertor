@@ -6,7 +6,7 @@ export default function TimezoneDiff () {
     const targetDefaultHours = useSelector(state => state.timezones.targetDefaultHours);
     return (
         <div className="timezone__diff text-center">
-            <p>{Math.abs(userDefaultHours - targetDefaultHours)} hour(s) {userDefaultHours - targetDefaultHours > 0 ? "ahead" : "behind"}</p>
+            {!(userDefaultHours && targetDefaultHours) ? <p>Number of hours behind/ahead</p> : <p>{Math.abs(userDefaultHours - targetDefaultHours)} hour(s) {userDefaultHours - targetDefaultHours > 0 ? "ahead" : "behind"}</p>}
         </div>
     )
 }
